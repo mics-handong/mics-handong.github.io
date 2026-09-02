@@ -25,6 +25,6 @@ const ALUMNI = [
   { name: "Solmon Shin",   degree: "M.S. 2026", now: "" },
   { name: "Yekwang Choi",  degree: "M.S. 2026", now: "" },
   { name: "Jaeyoon Jang",  degree: "M.S. 2026", now: "" },
-  { name: "Seojin Kim",    degree: "M.S. 2025", now: "ADD" },
+  { name: "Seojin Kim",    degree: "M.S. 2025", now: "Agency for Defense Development (ADD)" },
   { name: "Byungseok Kang",degree: "M.S. 2024", now: "Ph.D. program, POSTECH" }
 ];
