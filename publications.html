@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications &middot; {SITE}</title>
+<meta name="description" content="Papers and patents from the lab">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/icon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand" id="brand"></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h1>Publications</h1>
+      <p>Lab members are shown in <span class="pub"><span class="authors"><span class="me">bold</span></span></span>.</p>
+    </div>
+    <div id="pubs"></div>
+  </div>
+</section>
+<footer class="site-footer" id="footer"></footer>
+
+<script src="data/site.js"></script>
+<script src="data/research.js"></script>
+<script src="data/members.js"></script>
+<script src="data/publications.js"></script>
+<script src="data/news.js"></script>
+<script src="assets/js/render.js"></script>
+<script>
+  renderChrome();
+  renderPublications("pubs", 0);
+</script>
+</body>
+</html>
