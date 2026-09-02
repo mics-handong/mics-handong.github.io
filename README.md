@@ -39,26 +39,50 @@ and drop it in over `logo.png`.
 
 Setting `logo: ""` in `data/site.js` falls back to a plain text wordmark.
 
-## Deploying to GitHub Pages
+## Deploying
 
-1. Create a repository on GitHub (e.g. `mics-lab.github.io` or `lab-website`).
-2. From this folder:
+The site is hosted on GitHub Pages from
+<https://github.com/mics-handong/mics-handong.github.io> and served at
+**<https://mics-handong.github.io/>**.
 
-   ```
-   git init
-   git add .
-   git commit -m "Initial lab homepage"
-   git branch -M main
-   git remote add origin https://github.com/<org-or-user>/<repo>.git
-   git push -u origin main
-   ```
+The repository is owned by the `mics-handong` organization rather than by a
+personal account, so it stays with the lab as people come and go. Ask the PI
+for write access.
 
-3. On GitHub: **Settings -> Pages -> Source: Deploy from a branch -> main / (root)**.
-4. The site goes live at `https://<user>.github.io/<repo>/` in about a minute.
-   Every later `git push` republishes it.
+### Updating the site
+
+Edit the file you need in `data/`, then:
+
+```
+git add .
+git commit -m "Update publications"
+git push
+```
+
+GitHub rebuilds the site within about a minute. There is no build step to run
+and nothing to install.
+
+### First-time setup on a new machine
+
+```
+git clone https://github.com/mics-handong/mics-handong.github.io.git
+cd mics-handong.github.io
+```
+
+Open `index.html` in a browser to preview. For a local server instead:
+
+```
+python -m http.server 4173
+```
 
 ### Custom domain
 
-Add a file named `CNAME` containing just the domain (e.g. `mics.example.ac.kr`),
-then ask the university IT team for a CNAME DNS record pointing at
-`<user>.github.io`. HTTPS is issued automatically.
+If the university issues a subdomain (e.g. `mics.handong.edu`):
+
+1. Add a file named `CNAME` at the top level containing only that domain.
+2. Ask university IT for a DNS CNAME record pointing the subdomain at
+   `mics-handong.github.io`.
+3. In **Settings -> Pages**, enter the domain and tick *Enforce HTTPS* once the
+   certificate is issued.
+
+The `mics-handong.github.io` address keeps working and redirects to the new one.
