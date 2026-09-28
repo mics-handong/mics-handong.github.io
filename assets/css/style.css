@@ -105,6 +105,7 @@ section.alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
 .pi { display: grid; grid-template-columns: 200px 1fr; gap: 30px; align-items: start; }
 .pi .person { max-width: 200px; }   /* keep the PI photo from going full-width */
 @media (max-width: 640px) { .pi { grid-template-columns: 1fr; } }
+.grid.students { grid-template-columns: repeat(auto-fill, 200px); }   /* same size as the PI photo */
 
 /* ---------- publications ---------- */
 .pub-year {
