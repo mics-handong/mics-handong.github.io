@@ -39,12 +39,21 @@ const PUBLICATIONS = [
   },
   {
     category: "international",
-    year: null,                                  // TODO
+    year: 2025,
     type: "journal",
     title: "A 13-GHz Analog Fractional-N Sampling PLL With a Calibration-Assisted Seamless Loop-Switching Technique",
     authors: "**Seojin Kim**, Youngsik Kim, and **Shinwoong Kim**",
-    venue: "IEIE Journal of Semiconductor Technology and Science",
-    links: []
+    venue: "Journal of Semiconductor Technology and Science, Vol. 25, No. 3, pp. 292-300",
+    links: [{ label: "DOI", url: "https://doi.org/10.5573/JSTS.2025.25.3.292" }]
+  },
+  {
+    category: "international",
+    year: 2024,
+    type: "journal",
+    title: "A Fully Synthesizable Fractional-N Digital Phase-Locked Loop with a Calibrated Dual-Referenced Interpolating Time-to-Digital Converter to Compensate for Process-Voltage-Temperature Variations",
+    authors: "**Seojin Kim**, Youngsik Kim, Hyunwoo Son, and **Shinwoong Kim**",
+    venue: "Electronics, Vol. 13, No. 18, 3598",
+    links: [{ label: "DOI", url: "https://doi.org/10.3390/electronics13183598" }]
   },
   {
     category: "domestic",
