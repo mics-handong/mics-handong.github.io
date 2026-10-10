@@ -146,3 +146,20 @@ section.alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
 dl.info { display: grid; grid-template-columns: 140px 1fr; gap: 10px 20px; margin: 0; }
 dl.info dt { font-weight: 600; }
 dl.info dd { margin: 0; color: var(--ink-muted); }
+
+/* ---------- gallery ---------- */
+.gallery h1 { text-align: center; margin-bottom: 10px; }
+.gallery .year { text-align: center; color: var(--accent); margin: 40px 0 18px; }
+.gallery ul { margin: 0; padding: 0; }
+.gallery li { list-style: none; padding: 9px 0; }
+.gallery li a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.gallery li a:hover { color: var(--accent); }
+.gallery .when { color: var(--ink-muted); }
+.gallery .back { display: inline-block; margin-bottom: 18px; font-size: .92rem; }
+.gallery h1 + .when { text-align: center; margin-bottom: 28px; }
+.gallery .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.gallery .photos img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+  border-radius: var(--radius); background: var(--bg-alt);
+}
+.gallery .photos a:hover img { opacity: .9; }

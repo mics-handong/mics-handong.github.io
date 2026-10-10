@@ -13,6 +13,7 @@ All content lives in `data/`. You should not need to touch the HTML.
 | `data/members.js`       | PI, current students, alumni                   |
 | `data/publications.js`  | Papers and patents                             |
 | `data/news.js`          | Lab news on the home page                      |
+| `data/gallery.js`       | Lab events and photos (gallery page)           |
 
 Rules of thumb:
 - Wrap a lab member's name in `**Name**` in the `authors` field to highlight it.

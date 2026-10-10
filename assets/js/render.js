@@ -144,6 +144,47 @@ function renderPublications(id, limit) {
   put(id, html);
 }
 
+/* ---------- gallery ---------- */
+const MONTHS = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
+                "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+
+function renderGallery(id) {
+  const events = GALLERY.slice().sort((a, b) => b.date.localeCompare(a.date));
+  const label = e => {
+    const [y, m, d] = e.date.split("-").map(Number);
+    return { year: y, when: [`${MONTHS[m - 1]} ${d}`, e.place].filter(Boolean).join(", ") };
+  };
+
+  /* gallery.html?e=YYYY-MM-DD shows that event's photos */
+  const picked = events.find(e => e.date === new URLSearchParams(location.search).get("e"));
+  if (picked) {
+    const l = label(picked);
+    document.title = `${l.year} ${picked.title} · ${SITE.shortName}`;
+    put(id, `
+      <a class="back" href="gallery.html">&larr; Gallery</a>
+      <h1>${l.year} ${fmt(picked.title)}</h1>
+      <div class="when">${fmt(l.when)}</div>
+      <div class="photos">${picked.photos.map(p => `
+        <a href="${p}" target="_blank"><img src="${p}" alt="${fmt(picked.title)}" loading="lazy"></a>`).join("")}
+      </div>`);
+    return;
+  }
+
+  /* otherwise: the list of events, grouped by year */
+  let html = "<h1>Gallery</h1>", year = null;
+  events.forEach(e => {
+    const l = label(e);
+    if (l.year !== year) {
+      if (year !== null) html += "</ul>";
+      html += `<h2 class="year">${l.year}</h2><ul>`;
+      year = l.year;
+    }
+    html += `<li><a href="gallery.html?e=${e.date}">${l.year} ${fmt(e.title)}</a>
+             <span class="when">&mdash; ${fmt(l.when)}</span></li>`;
+  });
+  put(id, html + (year !== null ? "</ul>" : ""));
+}
+
 /* ---------- contact ---------- */
 function renderContact(id) {
   put(id, `
