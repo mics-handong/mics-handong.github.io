@@ -7,7 +7,7 @@
    ============================================================= */
 const GALLERY = [
   {
-    title: "오어사 야유회",
+    title: "오어사 야유회 🌿",
     date:  "2026-04-11",
     place: "",
     photos: [
@@ -17,7 +17,7 @@ const GALLERY = [
     ]
   },
   {
-    title: "수목원 야유회",
+    title: "수목원 야유회 🌳",
     date:  "2025-05-16",
     place: "",
     photos: [
@@ -26,7 +26,7 @@ const GALLERY = [
     ]
   },
   {
-    title: "벚꽃 구경",
+    title: "벚꽃 구경 🌸",
     date:  "2025-04-03",
     place: "",
     photos: [
@@ -35,7 +35,7 @@ const GALLERY = [
     ]
   },
   {
-    title: "오어사 야유회",
+    title: "오어사 야유회 🍂",
     date:  "2023-11-03",
     place: "",
     photos: [
