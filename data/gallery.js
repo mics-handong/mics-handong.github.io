@@ -16,7 +16,8 @@ const GALLERY = [
       "assets/img/gallery/2026-10-23-naeyeonsan-3.jpg",
       "assets/img/gallery/2026-10-23-naeyeonsan-4.jpg",
       "assets/img/gallery/2026-10-23-naeyeonsan-5.jpg",
-      "assets/img/gallery/2026-10-23-naeyeonsan-6.jpg"
+      "assets/img/gallery/2026-10-23-naeyeonsan-6.jpg",
+      "assets/img/gallery/2026-10-23-naeyeonsan-7.jpg"
     ]
   },
   {
