@@ -22,9 +22,15 @@ const MEMBERS = [
 ];
 
 const ALUMNI = [
-  { name: "Solmon Shin",   degree: "M.S. 2026", now: "" },
-  { name: "Jaeyoon Jang",  degree: "M.S. 2026", now: "" },
-  { name: "Yekwang Choi",  degree: "M.S. 2026", now: "Ph.D. program, KAIST" },
-  { name: "Seojin Kim",    degree: "M.S. 2025", now: "Agency for Defense Development (ADD)" },
-  { name: "Byungseok Kang",degree: "M.S. 2024", now: "Ph.D. program, POSTECH" }
+  /* newest first. thesis / now: leave "" to hide that line */
+  { name: "Solmon Shin",    degree: "M.S.", date: "2026/08",
+    thesis: "ADPLL-based GFSK Modulators", now: "" },
+  { name: "Jaeyoon Jang",   degree: "M.S.", date: "2026/02",
+    thesis: "Analog-Digital Hybrid PLL", now: "" },
+  { name: "Yekwang Choi",   degree: "M.S.", date: "2026/02",
+    thesis: "Fractional-N DPLL with High-Resolution TDCs", now: "Ph.D. program, KAIST" },
+  { name: "Seojin Kim",     degree: "M.S.", date: "2025/02",
+    thesis: "Fractional-N DPLL with Calibrated Dual-Referenced Interpolating TDC", now: "Agency for Defense Development (ADD)" },
+  { name: "Byungseok Kang", degree: "M.S.", date: "2024/08",
+    thesis: "Triple-Loop Wideband Fractional-N All-Digital PLL", now: "Ph.D. program, POSTECH" }
 ];

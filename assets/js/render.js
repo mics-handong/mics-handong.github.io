@@ -107,9 +107,14 @@ function renderMembers(id) {
 }
 
 function renderAlumni(id) {
-  put(id, `<ul>${ALUMNI.map(a => `
-    <li><span class="date">${fmt(a.degree)}</span>
-        <span><strong>${fmt(a.name)}</strong>${a.now ? ` &mdash; ${fmt(a.now)}` : ""}</span></li>`).join("")}</ul>`);
+  put(id, ALUMNI.map(a => `
+    <div class="alum">
+      <div><strong>${fmt(a.name)}</strong> <span class="sep">|</span> ${fmt(a.degree)} in ${fmt(a.date)}</div>
+      <ul>
+        ${a.thesis ? `<li>Dissertation: &ldquo;${fmt(a.thesis)}&rdquo;</li>` : ""}
+        ${a.now ? `<li>Current Affiliation: ${fmt(a.now)}</li>` : ""}
+      </ul>
+    </div>`).join(""));
 }
 
 /* ---------- publications ---------- */

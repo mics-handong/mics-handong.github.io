@@ -107,6 +107,12 @@ section.alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
 @media (max-width: 640px) { .pi { grid-template-columns: 1fr; } }
 .grid.students { grid-template-columns: repeat(auto-fill, 200px); }   /* same size as the PI photo */
 
+/* ---------- alumni ---------- */
+.alum { margin-bottom: 22px; }
+.alum .sep { color: var(--ink-muted); margin: 0 4px; }
+.alum ul { margin: 4px 0 0; padding-left: 22px; color: var(--ink-muted); font-size: .95rem; }
+.alum li { padding: 1px 0; }
+
 /* ---------- publications ---------- */
 .pub-year {
   font-size: .8rem; font-weight: 700; letter-spacing: .08em; color: var(--accent);
