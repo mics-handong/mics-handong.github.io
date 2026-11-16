@@ -24,6 +24,15 @@ const RESEARCH = [
     ]
   },
   {
+    title: "VCO-based ADCs",
+    summary: "Time-domain analog-to-digital converters that quantize with ring oscillators instead of voltage comparators, scaling with digital CMOS.",
+    detail: "A VCO-based ADC converts the input voltage into the frequency of a ring oscillator and counts its phase, so quantization happens in the time domain rather than with precision voltage comparators. Because the core is built from inverters and counters, it scales with digital CMOS and keeps working at low supply voltages, and the phase accumulation gives first-order noise shaping for free. We place the VCO quantizer inside a closed loop - an integrator ahead of it and a current DAC feeding the output back - so the loop gain suppresses the oscillator's voltage-to-frequency nonlinearity, and we build it from the same oscillator and counter blocks as our PLL and TDC work.",
+    figures: [
+      { src: "assets/img/research/vco-adc-block.png",  caption: "Closed-loop VCO-based ADC - block diagram" },
+      { src: "assets/img/research/vco-adc-layout.png", caption: "Closed-loop VCO-based ADC - layout" }
+    ]
+  },
+  {
     title: "Machine Learning for Mixed-Signal Design",
     summary: "Neural surrogate models that predict PLL performance from design parameters, and invert a target spec back into a design point.",
     detail: "Simulating a PLL across its full design space is expensive, so we train neural networks on large simulation sweeps to stand in for the simulator. Forward models predict spur level and phase noise from a set of design parameters in milliseconds; inverse models run the other direction, mapping a target specification back to the parameters that meet it. The aim is to shorten the loop between a specification and a first working design point."
