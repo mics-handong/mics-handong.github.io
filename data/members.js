@@ -25,7 +25,7 @@ const ALUMNI = [
   /* newest first. thesis / now: leave "" to hide that line */
   { name: "Solmon Shin",    degree: "M.S.", date: "2026/08",
     thesis: "ADPLL-based GFSK Modulators", now: "" },
-  { name: "Jaeyoon Jang",   degree: "M.S.", date: "2026/02",
+  { name: "Jaeyun Jang",   degree: "M.S.", date: "2026/02",
     thesis: "Analog-Digital Hybrid PLL", now: "" },
   { name: "Yekwang Choi",   degree: "M.S.", date: "2026/02",
     thesis: "Fractional-N DPLL with High-Resolution TDCs", now: "Ph.D. program, KAIST" },

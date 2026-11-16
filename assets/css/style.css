@@ -114,9 +114,8 @@ section.alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
 .alum li { padding: 1px 0; }
 
 /* ---------- publications ---------- */
-.pub-section { margin: 40px 0 6px; }
+.pub-section { margin: 40px 0 14px; }
 .pub-section:first-child { margin-top: 0; }
-.pub-year { font-weight: 700; color: var(--accent); margin: 24px 0 8px; }
 .pubs { margin: 0; padding-left: 22px; }
 .pub { padding: 7px 0; line-height: 1.6; }
 .pub .authors { color: var(--ink-muted); }

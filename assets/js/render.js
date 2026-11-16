@@ -149,23 +149,12 @@ function renderPublications(id, limit) {
     return;
   }
 
-  /* full page: by section, then by year, newest first */
+  /* full page: by section, newest first */
   let html = "";
   PUB_SECTIONS.forEach(([label, key]) => {
     const items = PUBLICATIONS.filter(p => p.category === key).sort(byDate);
     if (!items.length) return;
-    html += `<h2 class="pub-section">${label}</h2>`;
-    let year;
-    items.forEach(p => {
-      const y = p.year || "Forthcoming";
-      if (y !== year) {
-        if (year !== undefined) html += "</ul>";
-        html += `<div class="pub-year">[${y}]</div><ul class="pubs">`;
-        year = y;
-      }
-      html += pubHtml(p);
-    });
-    html += "</ul>";
+    html += `<h2 class="pub-section">${label}</h2><ul class="pubs">${items.map(pubHtml).join("")}</ul>`;
   });
   put(id, html);
 }
