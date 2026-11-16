@@ -1,17 +1,27 @@
 /* =============================================================
    research.js - research areas.
    Add or remove entries freely; the pages adapt automatically.
+   figures : optional. Images shown as a slider on the Research page,
+             in the order listed. Put the files in assets/img/research/.
    ============================================================= */
 const RESEARCH = [
   {
     title: "Fractional-N Digital PLLs & Frequency Synthesis",
     summary: "All-digital and sampling PLL architectures for low-jitter, low-spur clock generation from a few GHz up to 13 GHz.",
-    detail: "We build fractional-N digital PLLs and all-digital frequency synthesizers, separating the roles of the control blocks - DCO, delta-sigma modulator, and TDC/DTC - so that each can be optimized on its own terms. Across wide tuning ranges, multi-loop architectures keep loop switching stable while digital modules are reused to hold the area down. Recent designs include a 13-GHz analog fractional-N sampling PLL with seamless loop switching and a 4-5 GHz sub-sampling PLL that removes the TDC from the coarse loop entirely."
+    detail: "We build fractional-N digital PLLs and all-digital frequency synthesizers, separating the roles of the control blocks - DCO, delta-sigma modulator, and TDC/DTC - so that each can be optimized on its own terms. Across wide tuning ranges, multi-loop architectures keep loop switching stable while digital modules are reused to hold the area down. Recent designs include a 13-GHz analog fractional-N sampling PLL with seamless loop switching and a 4-5 GHz sub-sampling PLL that removes the TDC from the coarse loop entirely.",
+    figures: [
+      { src: "assets/img/research/tdc-ta-block.png",     caption: "7.6-GHz fractional-N DPLL - time-amplifier-based TDC" },
+      { src: "assets/img/research/tdc-ta-layout.jpg",    caption: "7.6-GHz fractional-N DPLL - layout" }
+    ]
   },
   {
     title: "Time-to-Digital Converters & Calibration",
     summary: "High-resolution TDC architectures, and the calibration schemes that keep them linear across PVT variation.",
-    detail: "Timing resolution sets the noise floor of a digital PLL, so we design TDCs that push resolution down to the picosecond range - time-amplifier-based and flash-ADC-assisted coarse-to-fine structures among them. Just as important is what happens after fabrication: adaptive reference-voltage calibration and digital linearity correction recover the accuracy that PVT variation and quantization error would otherwise cost."
+    detail: "Timing resolution sets the noise floor of a digital PLL, so we design TDCs that push resolution down to the picosecond range - time-amplifier-based and flash-ADC-assisted coarse-to-fine structures among them. Just as important is what happens after fabrication: adaptive reference-voltage calibration and digital linearity correction recover the accuracy that PVT variation and quantization error would otherwise cost.",
+    figures: [
+      { src: "assets/img/research/tdc-flash-block.png",  caption: "Flash ADC-assisted coarse-to-fine TDC - block diagram" },
+      { src: "assets/img/research/tdc-flash-layout.png", caption: "Flash ADC-assisted coarse-to-fine TDC - layout" }
+    ]
   },
   {
     title: "Machine Learning for Mixed-Signal Design",

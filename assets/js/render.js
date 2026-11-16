@@ -65,11 +65,53 @@ function renderChrome() {
 
 /* ---------- research ---------- */
 function renderResearch(id, full) {
+  if (full) { renderTopics(id); return; }
   put(id, RESEARCH.map(r => `
     <div class="card">
       <h3>${fmt(r.title)}</h3>
       <p>${fmt(full ? r.detail : r.summary)}</p>
     </div>`).join(""));
+}
+
+/* research page: one row per topic, with an image slider when it has figures */
+function renderTopics(id) {
+  put(id, RESEARCH.map((r, i) => {
+    const n = String(i + 1).padStart(2, "0");
+    const figs = r.figures || [];
+    const slider = figs.length ? `
+      <div class="slider">
+        <div class="slides">${figs.map(f => `
+          <figure><a href="${f.src}" target="_blank"><img src="${f.src}" alt="${fmt(f.caption)}" loading="lazy"></a>
+            <figcaption>${fmt(f.caption)}</figcaption></figure>`).join("")}
+        </div>
+        ${figs.length > 1 ? `
+        <button class="prev" type="button" aria-label="Previous">&#8249;</button>
+        <button class="next" type="button" aria-label="Next">&#8250;</button>
+        <div class="dots">${figs.map((_, k) => `<span${k ? "" : ' class="on"'}></span>`).join("")}</div>` : ""}
+      </div>` : "";
+    return `
+      <div class="topic${figs.length ? "" : " no-figs"}">
+        ${slider}
+        <div class="topic-text">
+          <div class="topic-no">Topic <span>|</span> ${n}</div>
+          <h2>${fmt(r.title)}</h2>
+          <p>${fmt(r.detail)}</p>
+        </div>
+      </div>`;
+  }).join(""));
+
+  /* arrows and dots scroll the strip one slide at a time; swiping works natively */
+  document.querySelectorAll(`#${id} .slider`).forEach(s => {
+    const strip = s.querySelector(".slides");
+    const dots = [...s.querySelectorAll(".dots span")];
+    const at = () => Math.round(strip.scrollLeft / strip.clientWidth);
+    const go = k => strip.scrollTo({ left: k * strip.clientWidth, behavior: "smooth" });
+    const prev = s.querySelector(".prev"), next = s.querySelector(".next");
+    if (prev) prev.onclick = () => go(Math.max(at() - 1, 0));
+    if (next) next.onclick = () => go(Math.min(at() + 1, dots.length - 1));
+    dots.forEach((d, k) => d.onclick = () => go(k));
+    strip.addEventListener("scroll", () => dots.forEach((d, k) => d.classList.toggle("on", k === at())));
+  });
 }
 
 /* ---------- news ---------- */
