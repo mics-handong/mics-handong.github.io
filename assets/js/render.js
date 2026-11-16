@@ -123,28 +123,49 @@ const PUB_SECTIONS = [
   ["Domestic Journals & Conferences",      "domestic"]
 ];
 
+const PUB_MONTHS = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
+                    "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+
+/* one citation line:
+   Authors, "Title," Venue (ABBR), vol. x, no. y, pp. a-b, Mon. Year. [Link] */
 function pubHtml(p) {
-  const venue = [p.venue, p.year].filter(Boolean).join(", ");
+  const when = [p.month ? PUB_MONTHS[p.month - 1] : "", p.year || ""].filter(Boolean).join(" ");
+  const venue = `<span class="venue">${fmt(p.venue)}</span>${p.abbr ? ` (<strong>${fmt(p.abbr)}</strong>)` : ""}`;
+  const tail = [venue, p.detail && fmt(p.detail), when].filter(Boolean).join(", ");
   return `
-      <div class="pub">
-        <div class="title">${fmt(p.title)}${p.type ? `<span class="tag">${fmt(p.type)}</span>` : ""}</div>
-        <div class="authors">${fmt(p.authors)}</div>
-        <div class="venue">${fmt(venue)}</div>
-        ${p.links && p.links.length ? `<div class="links">${
-          p.links.map(l => `<a href="${l.url}">${fmt(l.label)}</a>`).join("")}</div>` : ""}
-      </div>`;
+      <li class="pub">
+        <span class="authors">${fmt(p.authors)}</span>,
+        &ldquo;${fmt(p.title)},&rdquo; ${tail}.
+        ${p.url ? `<a class="link" href="${p.url}" target="_blank" rel="noopener">[Link🔗]</a>` : ""}
+      </li>`;
 }
 
-function renderPublications(id, limit) {
-  /* home page: the first few entries, in the order written in the data file */
-  if (limit) { put(id, PUBLICATIONS.slice(0, limit).map(pubHtml).join("")); return; }
+const byDate = (a, b) => ((b.year || 0) - (a.year || 0)) || ((b.month || 0) - (a.month || 0));
 
-  /* full page: grouped by section, newest first inside each group */
+function renderPublications(id, limit) {
+  /* home page: the newest few */
+  if (limit) {
+    put(id, `<ul class="pubs">${PUBLICATIONS.slice().sort(byDate).slice(0, limit).map(pubHtml).join("")}</ul>`);
+    return;
+  }
+
+  /* full page: by section, then by year, newest first */
   let html = "";
   PUB_SECTIONS.forEach(([label, key]) => {
-    const items = PUBLICATIONS.filter(p => p.category === key)
-                              .sort((a, b) => (b.year || 0) - (a.year || 0));
-    if (items.length) html += `<div class="pub-year">${label}</div>` + items.map(pubHtml).join("");
+    const items = PUBLICATIONS.filter(p => p.category === key).sort(byDate);
+    if (!items.length) return;
+    html += `<h2 class="pub-section">${label}</h2>`;
+    let year;
+    items.forEach(p => {
+      const y = p.year || "Forthcoming";
+      if (y !== year) {
+        if (year !== undefined) html += "</ul>";
+        html += `<div class="pub-year">[${y}]</div><ul class="pubs">`;
+        year = y;
+      }
+      html += pubHtml(p);
+    });
+    html += "</ul>";
   });
   put(id, html);
 }
