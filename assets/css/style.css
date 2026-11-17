@@ -108,18 +108,18 @@ section.alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
 .grid.students { grid-template-columns: repeat(auto-fill, 200px); }   /* same size as the PI photo */
 
 /* ---------- research topics ---------- */
-.topic {
+.topics .topic {
   display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px;
   align-items: center; padding: 40px 0; border-top: 1px solid var(--line);
 }
-.topic.no-figs { grid-template-columns: 1fr; }
+.topics .topic.no-figs { grid-template-columns: 1fr; }
 .topic-no {
   display: inline-block; font-size: .85rem; font-weight: 600; color: var(--accent);
   background: var(--accent-soft); border-radius: 20px; padding: 4px 14px; margin-bottom: 14px;
 }
 .topic-no span { opacity: .5; margin: 0 3px; }
-.topic h2 { font-size: 1.3rem; }
-.topic p { color: var(--ink-muted); margin: 0; }
+.topics .topic h2 { font-size: 1.3rem; }
+.topics .topic p { color: var(--ink-muted); margin: 0; }
 
 .slider { position: relative; }
 .slides {
@@ -143,7 +143,7 @@ section.alt { background: var(--bg-alt); border-block: 1px solid var(--line); }
 .dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); cursor: pointer; }
 .dots span.on { background: var(--accent); }
 @media (max-width: 760px) {
-  .topic { grid-template-columns: 1fr; gap: 22px; }
+  .topics .topic { grid-template-columns: 1fr; gap: 22px; }
   .slides img { height: 220px; }
 }
 
